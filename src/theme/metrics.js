@@ -1,5 +1,7 @@
+import { pxToRem } from '~/functions';
+
 export default {
-  maxWidth: 1100,
-  borderRadius: 12,
-  baseSpacing: 8,
+  maxWidth: pxToRem(1100),
+  borderRadius: (multiplier = 1) => pxToRem(12 * multiplier),
+  baseSpacing: (multiplier = 1) => pxToRem(8 * multiplier),
 };
