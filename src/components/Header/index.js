@@ -5,6 +5,12 @@ import { ArrowLeftCircle } from 'styled-icons/feather/ArrowLeftCircle';
 import { Container, Left, Right } from './styles';
 
 export default function Header({ title, subtitle }) {
+  function isHome() {
+    const currentPage = window.location.pathname;
+
+    return currentPage === '/';
+  }
+
   return (
     <Container>
       <Left>
@@ -13,11 +19,13 @@ export default function Header({ title, subtitle }) {
         <h1>{title}</h1>
       </Left>
 
-      <Right to="/">
-        <ArrowLeftCircle size="32" />
+      {!isHome() && (
+        <Right to="/">
+          <ArrowLeftCircle size="32" />
 
-        <span>Voltar</span>
-      </Right>
+          <span>Voltar</span>
+        </Right>
+      )}
     </Container>
   );
 }
