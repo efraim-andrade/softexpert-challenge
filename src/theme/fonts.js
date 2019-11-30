@@ -1,4 +1,7 @@
 export default {
+  size0: {
+    'font-size': `${12 / 16}rem`,
+  },
   size1: {
     'font-size': `${16 / 16}rem`,
   },
