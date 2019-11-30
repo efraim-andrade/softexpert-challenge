@@ -1,5 +1,5 @@
 import styled from 'styled-components';
 
-import { Container as ContainerComponent } from '~/components';
+import { PageContainer } from '~/components';
 
-export const Container = styled(ContainerComponent)``;
+export const Container = styled(PageContainer)``;

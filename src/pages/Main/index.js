@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Header } from '~/components';
+import { Header, Table } from '~/components';
 
 import { Container } from './styles';
 
@@ -9,7 +9,7 @@ export default function Main() {
     <Container>
       <Header subtitle="SoftExpert" title="Stock Exchange Challenge" />
 
-      <h1>Main Page</h1>
+      <Table />
     </Container>
   );
 }

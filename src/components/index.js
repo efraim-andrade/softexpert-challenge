@@ -1,4 +1,5 @@
+import Table from './Table';
 import Header from './Header';
-import Container from './Container';
+import PageContainer from './PageContainer';
 
-export { Container, Header };
+export { Table, PageContainer, Header };
