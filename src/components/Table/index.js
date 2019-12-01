@@ -45,7 +45,7 @@ export default function Table({ tableData, allTableData, setTableData }) {
             <tr
               key={item.symbol}
               onClick={() =>
-                (window.location.pathname = `/details?symbol=${item.symbol}&name=${item.name}`)
+                (window.location.href = `${window.location.origin}/details?symbol=${item.symbol}&name=${item.name}`)
               }
             >
               {Object.values(item).map((field, index) => (
