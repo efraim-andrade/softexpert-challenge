@@ -1,10 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Search from '../Search';
 
-import { Container, TableContainer, THeadLabel, TBodyItem } from './styles';
+import {
+  Container,
+  TableContainer,
+  THeadLabel,
+  TBodyItem,
+  CardsWrapper,
+  Card,
+  Row,
+} from './styles';
 
 export default function Table() {
+  const [windowSize, setWindowSize] = useState(window.innerWidth);
+
+  useEffect(() => {
+    function windowResizeListener() {
+      window.addEventListener('resize', () => setWindowSize(window.innerWidth));
+    }
+
+    windowResizeListener();
+
+    return () => {
+      windowResizeListener();
+    };
+  }, [windowSize]);
+
   function renderDesktop() {
     return (
       <TableContainer>
@@ -37,11 +59,37 @@ export default function Table() {
     );
   }
 
+  function renderMobile() {
+    return (
+      <CardsWrapper>
+        <Card>
+          <Row>
+            <strong>Symbol</strong>
+
+            <p>MMM</p>
+          </Row>
+
+          <Row>
+            <strong>Name</strong>
+
+            <p>3M Company</p>
+          </Row>
+
+          <Row>
+            <strong>Price</strong>
+
+            <p>$ 170.8</p>
+          </Row>
+        </Card>
+      </CardsWrapper>
+    );
+  }
+
   return (
     <Container>
       <Search />
 
-      {renderDesktop()}
+      {windowSize > 720 ? renderDesktop() : renderMobile()}
     </Container>
   );
 }

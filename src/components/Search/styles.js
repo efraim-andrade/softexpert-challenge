@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import media from 'styled-media-query';
 
 import { pxToRem } from '~/functions';
 import { metrics, colors } from '~/theme';
@@ -14,6 +15,10 @@ export const Container = styled.div`
 
   display: flex;
   align-items: center;
+
+  ${media.lessThan('medium')`
+    width: 100%;
+  `}
 
   > button {
     border: none;

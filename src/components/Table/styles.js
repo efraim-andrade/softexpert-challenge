@@ -49,3 +49,38 @@ export const TBodyItem = styled.td`
   font-weight: 400;
   text-align: center;
 `;
+
+export const CardsWrapper = styled.div``;
+
+export const Card = styled.div`
+  margin-bottom: ${metrics.baseSpacing()};
+  border-radius: ${metrics.borderRadius()};
+  padding: ${metrics.baseSpacing(1.5)} ${metrics.baseSpacing(2)};
+
+  background: ${colors.rowBlueLight};
+
+  &:nth-child(2n) {
+    background: ${colors.rowBlueDark};
+  }
+`;
+
+export const Row = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  & + div {
+    margin-top: ${metrics.baseSpacing()};
+  }
+
+  > strong {
+    ${fonts.size1};
+    font-weight: 700;
+    color: ${colors.grey};
+  }
+
+  > p {
+    ${fonts.size1};
+    font-weight: 400;
+  }
+`;
