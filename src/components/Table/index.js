@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
 import Search from '../Search';
 
@@ -12,7 +13,7 @@ import {
   Row,
 } from './styles';
 
-export default function Table() {
+export default function Table({ tableData }) {
   const [windowSize, setWindowSize] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -32,28 +33,20 @@ export default function Table() {
       <TableContainer>
         <thead>
           <tr>
-            <THeadLabel>Symbol</THeadLabel>
-            <THeadLabel>Name</THeadLabel>
-            <THeadLabel>Price</THeadLabel>
+            {Object.keys(tableData[0]).map(label => (
+              <THeadLabel key={label}>{label}</THeadLabel>
+            ))}
           </tr>
         </thead>
 
         <tbody>
-          <tr>
-            <TBodyItem>MMM</TBodyItem>
-            <TBodyItem>3M Company</TBodyItem>
-            <TBodyItem>$ 127.0</TBodyItem>
-          </tr>
-          <tr>
-            <TBodyItem>MMM</TBodyItem>
-            <TBodyItem>3M Company</TBodyItem>
-            <TBodyItem>$ 127.0</TBodyItem>
-          </tr>
-          <tr>
-            <TBodyItem>MMM</TBodyItem>
-            <TBodyItem>3M Company</TBodyItem>
-            <TBodyItem>$ 127.0</TBodyItem>
-          </tr>
+          {tableData.map(item => (
+            <tr key={item.symbol}>
+              {Object.values(item).map(field => (
+                <TBodyItem key={field}>{field}</TBodyItem>
+              ))}
+            </tr>
+          ))}
         </tbody>
       </TableContainer>
     );
@@ -62,25 +55,17 @@ export default function Table() {
   function renderMobile() {
     return (
       <CardsWrapper>
-        <Card>
-          <Row>
-            <strong>Symbol</strong>
+        {tableData.map((row, index) => (
+          <Card key={`card-${index}`}>
+            {Object.keys(row).map(field => (
+              <Row key={field}>
+                <strong>{field}</strong>
 
-            <p>MMM</p>
-          </Row>
-
-          <Row>
-            <strong>Name</strong>
-
-            <p>3M Company</p>
-          </Row>
-
-          <Row>
-            <strong>Price</strong>
-
-            <p>$ 170.8</p>
-          </Row>
-        </Card>
+                <p>{row[field]}</p>
+              </Row>
+            ))}
+          </Card>
+        ))}
       </CardsWrapper>
     );
   }
@@ -93,3 +78,11 @@ export default function Table() {
     </Container>
   );
 }
+
+Table.defaultProps = {
+  tableData: [{}],
+};
+
+Table.propTypes = {
+  tableData: PropTypes.arrayOf(PropTypes.shape()),
+};

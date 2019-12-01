@@ -15,8 +15,8 @@ export const Container = styled.div`
 export const Left = styled.div`
   > h2 {
     ${fonts.size3};
-    color: ${colors.black};
-    opacity: 0.3;
+    color: ${colors.secondary};
+    opacity: 0.6;
 
     ${media.lessThan('medium')`
       ${fonts.size1};

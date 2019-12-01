@@ -34,6 +34,7 @@ export const THeadLabel = styled.th`
   ${fonts.size2};
   font-weight: 700;
   color: ${colors.white};
+  text-transform: capitalize;
 
   &:first-child {
     border-top-left-radius: ${metrics.borderRadius()};
@@ -77,10 +78,12 @@ export const Row = styled.div`
     ${fonts.size1};
     font-weight: 700;
     color: ${colors.grey};
+    text-transform: capitalize;
   }
 
   > p {
     ${fonts.size1};
     font-weight: 400;
+    text-align: right;
   }
 `;

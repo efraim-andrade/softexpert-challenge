@@ -7,6 +7,8 @@ export default {
   primaryLight: '#0091ED9B',
   primaryLighter: '#0091ED4D',
 
+  secondary: '#ef3729',
+
   rowBlueLight: '#0091ED08',
   rowBlueDark: '#0091ED12',
 };
