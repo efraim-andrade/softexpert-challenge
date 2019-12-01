@@ -1,5 +1,6 @@
+import Chart from './Chart';
 import Table from './Table';
 import Header from './Header';
 import PageContainer from './PageContainer';
 
-export { Table, PageContainer, Header };
+export { Chart, Table, PageContainer, Header };

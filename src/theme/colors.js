@@ -11,4 +11,8 @@ export default {
 
   rowBlueLight: '#0091ED08',
   rowBlueDark: '#0091ED12',
+
+  success: 'hsl(141, 53%, 53%)',
+  danger: 'hsl(14, 100%, 53%)',
+  warning: 'hsl(48, 100%, 67%)',
 };
