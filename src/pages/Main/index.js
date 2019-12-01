@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
+import { Eclipse } from 'react-loading-io';
 
 import api from '~/services/api';
 import { Header, Table } from '~/components';
+import { colors } from '~/theme';
 
-import { Container } from './styles';
+import { Container, LoaderContainer } from './styles';
 
 let allTableData = [];
 let page = 3;
@@ -20,11 +22,25 @@ export default function Main() {
     return getPageHeight() - window.scrollY;
   }
 
+  function handleSearch(inputText) {
+    const filteredRows = allTableData.filter(data => {
+      const symbolUpper = data.symbol.toUpperCase();
+      const nameUpper = data.name.toUpperCase();
+      const inputTextUpper = inputText.toUpperCase();
+
+      return (
+        symbolUpper.indexOf(inputTextUpper) > -1 ||
+        nameUpper.indexOf(inputTextUpper) > -1
+      );
+    });
+
+    return setTableData(filteredRows.slice(0, 50));
+  }
+
   useEffect(() => {
     function fetchMoreCompanies() {
-      page += 1;
-
       setTableData(allTableData.slice(0, 30 * page));
+      page += 1;
     }
 
     function scrollHandlers() {
@@ -65,10 +81,15 @@ export default function Main() {
 
   return (
     <Container>
-      {/* <p>{allTableData}</p> */}
       <Header subtitle="SoftExpert" title="Stock Exchange Challenge" />
 
-      <Table tableData={tableData} />
+      {isLoading ? (
+        <LoaderContainer>
+          <Eclipse size={96} color={colors.primary} />
+        </LoaderContainer>
+      ) : (
+        <Table tableData={tableData} handleSearch={handleSearch} />
+      )}
     </Container>
   );
 }

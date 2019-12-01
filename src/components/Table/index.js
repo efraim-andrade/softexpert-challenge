@@ -13,7 +13,7 @@ import {
   Row,
 } from './styles';
 
-export default function Table({ tableData }) {
+export default function Table({ tableData, handleSearch }) {
   const [windowSize, setWindowSize] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -42,8 +42,10 @@ export default function Table({ tableData }) {
         <tbody>
           {tableData.map(item => (
             <tr key={item.symbol}>
-              {Object.values(item).map(field => (
-                <TBodyItem key={field}>{field}</TBodyItem>
+              {Object.values(item).map((field, index) => (
+                <TBodyItem key={`field ${index} ${field}`}>
+                  {typeof field === 'number' ? `$ ${field}` : field}
+                </TBodyItem>
               ))}
             </tr>
           ))}
@@ -61,7 +63,7 @@ export default function Table({ tableData }) {
               <Row key={field}>
                 <strong>{field}</strong>
 
-                <p>{row[field]}</p>
+                <p>{field === 'price' ? `$ ${row[field]}` : row[field]}</p>
               </Row>
             ))}
           </Card>
@@ -70,11 +72,15 @@ export default function Table({ tableData }) {
     );
   }
 
+  function handleRender() {
+    return windowSize > 720 ? renderDesktop() : renderMobile();
+  }
+
   return (
     <Container>
-      <Search />
+      <Search handleSearch={handleSearch} />
 
-      {windowSize > 720 ? renderDesktop() : renderMobile()}
+      {tableData.length > 0 ? handleRender() : <p>Nothing was found...</p>}
     </Container>
   );
 }

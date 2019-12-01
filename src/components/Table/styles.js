@@ -3,7 +3,14 @@ import styled from 'styled-components';
 import { pxToRem } from '~/functions';
 import { colors, metrics, fonts } from '~/theme';
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  > p {
+    margin-top: ${metrics.baseSpacing(3)};
+
+    ${fonts.size2};
+    text-align: center;
+  }
+`;
 
 export const TableContainer = styled.table`
   width: 100%;
@@ -46,6 +53,9 @@ export const THeadLabel = styled.th`
 `;
 
 export const TBodyItem = styled.td`
+  max-width: ${pxToRem(200)};
+  height: ${pxToRem(40)};
+
   ${fonts.size2};
   font-weight: 400;
   text-align: center;
@@ -82,6 +92,8 @@ export const Row = styled.div`
   }
 
   > p {
+    max-width: 80%;
+
     ${fonts.size1};
     font-weight: 400;
     text-align: right;
