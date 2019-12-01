@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import Search from '../Search';
 
@@ -15,6 +15,8 @@ import {
 } from './styles';
 
 export default function Table({ tableData, allTableData, setTableData }) {
+  const history = useHistory();
+
   const [windowSize, setWindowSize] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -45,7 +47,7 @@ export default function Table({ tableData, allTableData, setTableData }) {
             <tr
               key={item.symbol}
               onClick={() =>
-                (window.location.href = `${window.location.origin}/details?symbol=${item.symbol}&name=${item.name}`)
+                history.push(`/details?symbol=${item.symbol}&name=${item.name}`)
               }
             >
               {Object.values(item).map((field, index) => (
