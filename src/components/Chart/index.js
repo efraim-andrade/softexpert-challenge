@@ -41,12 +41,12 @@ export default function Chart({ data, title, type }) {
 }
 
 Chart.defaultProps = {
-  data: [{}],
+  data: {},
   type: 'spline',
 };
 
 Chart.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.shape()),
+  data: PropTypes.shape(),
   title: PropTypes.string.isRequired,
   type: PropTypes.string,
 };
