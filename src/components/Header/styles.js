@@ -13,6 +13,8 @@ export const Container = styled.div`
 `;
 
 export const Left = styled.div`
+  width: 100%;
+
   > h2 {
     ${fonts.size3};
     color: ${colors.secondary};
@@ -24,6 +26,8 @@ export const Left = styled.div`
   }
 
   > h1 {
+    max-width: 90%;
+
     ${fonts.size4};
     color: ${colors.black};
 
