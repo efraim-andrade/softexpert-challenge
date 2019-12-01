@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import Search from '../Search';
 
@@ -41,7 +42,12 @@ export default function Table({ tableData, allTableData, setTableData }) {
 
         <tbody>
           {tableData.map(item => (
-            <tr key={item.symbol}>
+            <tr
+              key={item.symbol}
+              onClick={() =>
+                (window.location.pathname = `/details?symbol=${item.symbol}&name=${item.name}`)
+              }
+            >
               {Object.values(item).map((field, index) => (
                 <TBodyItem key={`field ${index} ${field}`}>
                   {typeof field === 'number' ? `$ ${field}` : field}
@@ -57,13 +63,16 @@ export default function Table({ tableData, allTableData, setTableData }) {
   function renderMobile() {
     return (
       <CardsWrapper>
-        {tableData.map((row, index) => (
-          <Card key={`card-${index}`}>
-            {Object.keys(row).map(field => (
+        {tableData.map((item, index) => (
+          <Card
+            key={`card-${index}`}
+            to={`/details?symbol=${item.symbol}&name=${item.name}`}
+          >
+            {Object.keys(item).map(field => (
               <Row key={field}>
                 <strong>{field}</strong>
 
-                <p>{field === 'price' ? `$ ${row[field]}` : row[field]}</p>
+                <p>{field === 'price' ? `$ ${item[field]}` : item[field]}</p>
               </Row>
             ))}
           </Card>

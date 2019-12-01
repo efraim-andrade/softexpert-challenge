@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import { pxToRem } from '~/functions';
 import { colors, metrics, fonts } from '~/theme';
@@ -25,8 +26,14 @@ export const TableContainer = styled.table`
   > tbody {
     margin-top: ${metrics.baseSpacing()};
 
-    > tr {
+    tr {
+      cursor: pointer;
+      transition: 0.3s;
       background: ${colors.rowBlueLight};
+
+      &:hover {
+        transform: scale(1.03);
+      }
 
       &:nth-child(2n) {
         background: ${colors.rowBlueDark};
@@ -63,12 +70,18 @@ export const TBodyItem = styled.td`
 
 export const CardsWrapper = styled.div``;
 
-export const Card = styled.div`
+export const Card = styled(Link)`
+  display: block;
   margin-bottom: ${metrics.baseSpacing()};
   border-radius: ${metrics.borderRadius()};
   padding: ${metrics.baseSpacing(1.5)} ${metrics.baseSpacing(2)};
 
+  transition: 0.3s;
   background: ${colors.rowBlueLight};
+
+  &:hover {
+    transform: translateX(1%);
+  }
 
   &:nth-child(2n) {
     background: ${colors.rowBlueDark};
@@ -97,5 +110,6 @@ export const Row = styled.div`
     ${fonts.size1};
     font-weight: 400;
     text-align: right;
+    color: ${colors.black};
   }
 `;
