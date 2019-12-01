@@ -85,9 +85,8 @@ export default function Details() {
             ],
           },
         });
-        console.log('financials', financials);
       } catch (err) {
-        console.log(err);
+        alert('Algo deu errado ao buscar as informações');
       }
     }
 

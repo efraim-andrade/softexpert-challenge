@@ -12,41 +12,14 @@ export const Container = styled.div`
   justify-content: space-between;
 `;
 
-export const Left = styled.div`
-  width: 100%;
+export const GoBack = styled(Link)`
+  margin-right: ${metrics.baseSpacing(2)};
 
-  > h2 {
-    ${fonts.size3};
-    color: ${colors.secondary};
-    opacity: 0.6;
-
-    ${media.lessThan('medium')`
-      ${fonts.size1};
-    `}
-  }
-
-  > h1 {
-    max-width: 90%;
-
-    ${fonts.size4};
-    color: ${colors.black};
-
-    ${media.lessThan('medium')`
-      ${fonts.size2};
-    `}
-  }
-`;
-
-export const Right = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
 
   cursor: pointer;
-
-  ${media.lessThan('medium')`
-    flex-direction: column;
-  `}
 
   &:hover {
     > svg {
@@ -67,10 +40,29 @@ export const Right = styled(Link)`
       margin-right: 0;
     `}
   }
+`;
 
-  > span {
+export const Info = styled.div`
+  width: 100%;
+
+  > h2 {
+    ${fonts.size3};
+    color: ${colors.secondary};
+    opacity: 0.6;
+
     ${media.lessThan('medium')`
-      ${fonts.size0};
+      ${fonts.size1};
+    `}
+  }
+
+  > h1 {
+    max-width: 90%;
+
+    ${fonts.size4};
+    color: ${colors.black};
+
+    ${media.lessThan('medium')`
+      ${fonts.size2};
     `}
   }
 `;

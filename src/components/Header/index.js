@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ArrowLeftCircle } from 'styled-icons/feather/ArrowLeftCircle';
 
-import { Container, Left, Right } from './styles';
+import { Container, GoBack, Info } from './styles';
 
 export default function Header({ title, subtitle }) {
   function isHome() {
@@ -13,19 +13,17 @@ export default function Header({ title, subtitle }) {
 
   return (
     <Container>
-      <Left>
+      {!isHome() && (
+        <GoBack to="/">
+          <ArrowLeftCircle size="36" />
+        </GoBack>
+      )}
+
+      <Info>
         <h2>{subtitle}</h2>
 
         <h1>{title}</h1>
-      </Left>
-
-      {!isHome() && (
-        <Right to="/">
-          <ArrowLeftCircle size="32" />
-
-          <span>Voltar</span>
-        </Right>
-      )}
+      </Info>
     </Container>
   );
 }
