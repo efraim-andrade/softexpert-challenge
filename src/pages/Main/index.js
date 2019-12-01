@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Eclipse } from 'react-loading-io';
 
 import api from '~/services/api';
@@ -14,30 +14,15 @@ export default function Main() {
   const [tableData, setTableData] = useState([{}]);
   const [isLoading, setIsLoading] = useState(false);
 
-  function getPageHeight() {
-    return document.body.offsetHeight - window.innerHeight;
-  }
-
-  function getBottomOffset() {
-    return getPageHeight() - window.scrollY;
-  }
-
-  function handleSearch(inputText) {
-    const filteredRows = allTableData.filter(data => {
-      const symbolUpper = data.symbol.toUpperCase();
-      const nameUpper = data.name.toUpperCase();
-      const inputTextUpper = inputText.toUpperCase();
-
-      return (
-        symbolUpper.indexOf(inputTextUpper) > -1 ||
-        nameUpper.indexOf(inputTextUpper) > -1
-      );
-    });
-
-    return setTableData(filteredRows.slice(0, 50));
-  }
-
   useEffect(() => {
+    function getPageHeight() {
+      return document.body.offsetHeight - window.innerHeight;
+    }
+
+    function getBottomOffset() {
+      return getPageHeight() - window.scrollY;
+    }
+
     function fetchMoreCompanies() {
       setTableData(allTableData.slice(0, 30 * page));
       page += 1;
@@ -45,7 +30,7 @@ export default function Main() {
 
     function scrollHandlers() {
       window.addEventListener('scroll', () => {
-        if (getBottomOffset() <= 200 && !isLoading) {
+        if (getBottomOffset() <= 250 && !isLoading) {
           fetchMoreCompanies();
         }
       });
@@ -56,7 +41,7 @@ export default function Main() {
     return () => {
       scrollHandlers();
     };
-  }, [page]);
+  }, []);
 
   useEffect(() => {
     async function fetchCompanies() {
@@ -88,7 +73,11 @@ export default function Main() {
           <Eclipse size={96} color={colors.primary} />
         </LoaderContainer>
       ) : (
-        <Table tableData={tableData} handleSearch={handleSearch} />
+        <Table
+          tableData={tableData}
+          allTableData={allTableData}
+          setTableData={setTableData}
+        />
       )}
     </Container>
   );

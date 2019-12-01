@@ -13,7 +13,7 @@ import {
   Row,
 } from './styles';
 
-export default function Table({ tableData, handleSearch }) {
+export default function Table({ tableData, allTableData, setTableData }) {
   const [windowSize, setWindowSize] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -78,7 +78,7 @@ export default function Table({ tableData, handleSearch }) {
 
   return (
     <Container>
-      <Search handleSearch={handleSearch} />
+      <Search allTableData={allTableData} setTableData={setTableData} />
 
       {tableData.length > 0 ? handleRender() : <p>Nothing was found...</p>}
     </Container>
