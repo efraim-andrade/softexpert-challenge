@@ -4,7 +4,7 @@ import { ArrowLeftCircle } from 'styled-icons/feather/ArrowLeftCircle';
 
 import { Container, GoBack, Info } from './styles';
 
-export default function Header({ title, subtitle }) {
+export default function Header({ title, subtitle, price }) {
   function isHome() {
     const currentPage = window.location.pathname;
 
@@ -20,7 +20,7 @@ export default function Header({ title, subtitle }) {
       )}
 
       <Info>
-        <h2>{subtitle}</h2>
+        {price ? <h2>{`${subtitle} - $ ${price}`}</h2> : <h2>{subtitle}</h2>}
 
         <h1>{title}</h1>
       </Info>
@@ -28,7 +28,12 @@ export default function Header({ title, subtitle }) {
   );
 }
 
+Header.defaultProps = {
+  price: 0,
+};
+
 Header.propTypes = {
+  price: PropTypes.number,
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
 };

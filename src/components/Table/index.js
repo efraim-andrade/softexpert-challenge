@@ -47,7 +47,9 @@ export default function Table({ tableData, allTableData, setTableData }) {
             <tr
               key={item.symbol}
               onClick={() =>
-                history.push(`/details?symbol=${item.symbol}&name=${item.name}`)
+                history.push(
+                  `/details?symbol=${item.symbol}&name=${item.name}&price=${item.price}`
+                )
               }
             >
               {Object.values(item).map((field, index) => (
@@ -68,7 +70,7 @@ export default function Table({ tableData, allTableData, setTableData }) {
         {tableData.map((item, index) => (
           <Card
             key={`card-${index}`}
-            to={`/details?symbol=${item.symbol}&name=${item.name}`}
+            to={`/details?symbol=${item.symbol}&name=${item.name}&price=${item.price}`}
           >
             {Object.keys(item).map(field => (
               <Row key={field}>

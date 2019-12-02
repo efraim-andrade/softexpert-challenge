@@ -11,8 +11,11 @@ export default function Details() {
 
   const urlParams = new URLSearchParams(window.location.search);
 
-  const CompanyName = urlParams.get('name');
-  const CompanySymbol = urlParams.get('symbol');
+  const companyInfo = {
+    name: urlParams.get('name'),
+    symbol: urlParams.get('symbol'),
+    price: urlParams.get('price'),
+  };
 
   useEffect(() => {
     async function fetchFinancialsInfo() {
@@ -95,7 +98,11 @@ export default function Details() {
 
   return (
     <Container>
-      <Header title={CompanyName} subtitle={CompanySymbol} />
+      <Header
+        title={companyInfo.name}
+        price={companyInfo.price}
+        subtitle={companyInfo.symbol}
+      />
 
       <Chart
         data={financialsData.chartOne}
