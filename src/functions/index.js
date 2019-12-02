@@ -1,3 +1,4 @@
 import pxToRem from './pxToRem';
+import windowResizeMock from './windowResizeMock';
 
-export { pxToRem };
+export { pxToRem, windowResizeMock };

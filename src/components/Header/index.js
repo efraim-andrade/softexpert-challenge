@@ -14,7 +14,7 @@ export default function Header({ title, subtitle }) {
   return (
     <Container>
       {!isHome() && (
-        <GoBack to="/">
+        <GoBack to="/" data-testid="goBack">
           <ArrowLeftCircle size="36" />
         </GoBack>
       )}

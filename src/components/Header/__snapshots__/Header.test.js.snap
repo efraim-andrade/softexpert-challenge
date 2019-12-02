@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components - Header should render correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bwzfXH hslxvQ"
+  >
+    <div
+      class="sc-bxivhb fHeAsf"
+    >
+      <h2>
+        SoftExpert
+      </h2>
+      <h1>
+        Stock Exchange Challenge
+      </h1>
+    </div>
+  </div>
+</DocumentFragment>
+`;

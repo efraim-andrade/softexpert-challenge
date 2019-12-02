@@ -1,42 +1,17 @@
 import React from 'react';
 import { Router } from 'react-router-dom';
-import matchMediaPolyfill from 'mq-polyfill';
 import { createMemoryHistory } from 'history';
-import { render, cleanup } from '@testing-library/react';
+import { render } from '@testing-library/react';
+
+import { windowResizeMock } from '~/functions';
 
 import Table from './index';
 import data from './mockData';
 
 describe('Components - Table', () => {
-  const originalError = console.error;
-
-  beforeAll(() => {
-    matchMediaPolyfill(window);
-
-    window.resizeTo = function resizeTo(width, height) {
-      Object.assign(this, {
-        innerWidth: width,
-        innerHeight: height,
-        outerWidth: width,
-        outerHeight: height,
-      }).dispatchEvent(new this.Event('resize'));
-    };
-
-    console.error = (...args) => {
-      if (/Warning.*not wrapped in act/.test(args[0])) {
-        return;
-      }
-      originalError.call(console, ...args);
-    };
-  });
-
-  afterEach(cleanup);
-
-  afterAll(() => {
-    console.error = originalError;
-  });
-
   const history = createMemoryHistory();
+
+  windowResizeMock();
 
   it('Should render correctly', () => {
     const { asFragment } = render(
