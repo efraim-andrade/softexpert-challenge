@@ -5,6 +5,7 @@ OBS:
 - As estatísticas foram tiradas da aplicação Clickup onde utilizei para me organizar e trackear o tempo.
 - O Design foi feito no Adobe XD antes de ser feito o frontend.
 - O site foi hospedado no Netlify
+- Não foi utilizado Redux pois não achei necessário para a estrutura apresentada.
 
 ### Horas do projeto
 
