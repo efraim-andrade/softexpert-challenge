@@ -20,14 +20,14 @@ export default function Table({ tableData, allTableData, setTableData }) {
   const [windowSize, setWindowSize] = useState(window.innerWidth);
 
   useEffect(() => {
-    function windowResizeListener() {
-      window.addEventListener('resize', () => setWindowSize(window.innerWidth));
+    function handleResize() {
+      return setWindowSize(window.innerWidth);
     }
 
-    windowResizeListener();
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      windowResizeListener();
+      window.removeEventListener('resize', handleResize);
     };
   }, [windowSize]);
 
@@ -64,7 +64,7 @@ export default function Table({ tableData, allTableData, setTableData }) {
 
   function renderMobile() {
     return (
-      <CardsWrapper>
+      <CardsWrapper data-testid="layout-mobile">
         {tableData.map((item, index) => (
           <Card
             key={`card-${index}`}
@@ -98,8 +98,11 @@ export default function Table({ tableData, allTableData, setTableData }) {
 
 Table.defaultProps = {
   tableData: [{}],
+  allTableData: [{}],
 };
 
 Table.propTypes = {
+  setTableData: PropTypes.func.isRequired,
   tableData: PropTypes.arrayOf(PropTypes.shape()),
+  allTableData: PropTypes.arrayOf(PropTypes.shape()),
 };

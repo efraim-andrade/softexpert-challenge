@@ -4984,7 +4984,7 @@ highcharts@^7.2.1:
   resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-7.2.1.tgz#313c434bbfd4525a72b76c6bfbd9c39dfe2d1993"
   integrity sha512-/fSUZiONmM+x49IQJNf8XwZGiNGOPRmxEOcd0xdJP9Xc3OlG46ZiUWgSLfhYQ9Oyhmzc3V3SKYCLud8+rKLi+w==
 
-history@^4.9.0:
+history@^4.10.1, history@^4.9.0:
   version "4.10.1"
   resolved "https://registry.yarnpkg.com/history/-/history-4.10.1.tgz#33371a65e3a83b267434e2b3f3b1b4c58aad4cf3"
   integrity sha512-36nwAD620w12kuzPAsyINPWJqlNbij+hpK1k9XRloDtym8mxzGYl2c17LnV6IAGB2Dmg4tEa7G7DlawS0+qjew==
@@ -6832,6 +6832,11 @@ move-concurrently@^1.0.1:
     mkdirp "^0.5.1"
     rimraf "^2.5.4"
     run-queue "^1.0.3"
+
+mq-polyfill@^1.1.8:
+  version "1.1.8"
+  resolved "https://registry.yarnpkg.com/mq-polyfill/-/mq-polyfill-1.1.8.tgz#c144190b21214bf8d8b099e7e34e6ca2b888dc14"
+  integrity sha1-wUQZCyEhS/jYsJnn405soriI3BQ=
 
 ms@2.0.0:
   version "2.0.0"

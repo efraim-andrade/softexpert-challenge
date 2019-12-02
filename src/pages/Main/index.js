@@ -53,6 +53,7 @@ export default function Main() {
         } = await api.get('company/stock/list');
 
         allTableData = symbolsList;
+
         setTableData(symbolsList.slice(0, 30));
       } catch (err) {
         alert('Algo deu errado ao buscar os dados!');
