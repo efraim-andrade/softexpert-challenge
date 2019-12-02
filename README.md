@@ -2,14 +2,19 @@
 
 OBS:
 
-- As estatisticas foram tiradas da aplicação Clickup onde utilizei para me organizar e trackear o tempo.
+- As estatísticas foram tiradas da aplicação Clickup onde utilizei para me organizar e trackear o tempo.
 - O Design foi feito no Adobe XD antes de ser feito o frontend.
+- O site foi hospedado no Netlify
 
 ### Horas do projeto
 
 - Design: 1h 49m
 - Front: 13h 43m
 - Total do projeto: 15h 32m
+
+### Site
+
+- https://softexpertchallenge.netlify.com/
 
 ---
 
