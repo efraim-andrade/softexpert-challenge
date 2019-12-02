@@ -1,3 +1,18 @@
+# Estatisticas do desafio
+
+OBS:
+
+- As estatisticas foram tiradas da aplicação Clickup onde utilizei para me organizar e trackear o tempo.
+- O Design foi feito no Adobe XD antes de ser feito o frontend.
+
+### Horas do projeto
+
+- Design: 1h 49m
+- Front: 13h 43m
+- Total do projeto: 15h 32m
+
+---
+
 ## Desafio Front-end SoftExpert
 
 #### Desafio focado para o time de Analytics
@@ -37,4 +52,4 @@ Pode usar sua criatividade. :smiley:
 
 - React JS
 - Redux
-- [Highcharts (Lib de gráficos que usamos)](https://www.highcharts.com "Highcharts")
+- [Highcharts (Lib de gráficos que usamos)](https://www.highcharts.com 'Highcharts')
