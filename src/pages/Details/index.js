@@ -22,7 +22,7 @@ export default function Details() {
       try {
         const {
           data: { financials },
-        } = await api.get('financials/income-statement/AAPL');
+        } = await api.get(`financials/income-statement/${companyInfo.symbol}`);
 
         const dates = financials
           .map(data => new Date(data.date).getFullYear())
