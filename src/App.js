@@ -1,16 +1,20 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
+import store from '~/store';
 import Routes from '~/routes';
 import { GlobalStyles } from '~/theme';
 
 function App() {
   return (
-    <BrowserRouter>
-      <GlobalStyles />
+    <Provider store={store}>
+      <BrowserRouter>
+        <GlobalStyles />
 
-      <Routes />
-    </BrowserRouter>
+        <Routes />
+      </BrowserRouter>
+    </Provider>
   );
 }
 
