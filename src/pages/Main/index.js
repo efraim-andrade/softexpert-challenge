@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Eclipse } from 'react-loading-io';
+import { useDispatch, useSelector } from 'react-redux';
 
 import api from '~/services/api';
-import { Header, Table } from '~/components';
 import { colors } from '~/theme';
+import { Header, Table } from '~/components';
+import { addEnterprises } from '~/store/modules/enterprises/actions';
 
 import { Container, LoaderContainer } from './styles';
 
@@ -11,7 +13,11 @@ let allTableData = [];
 let page = 3;
 
 export default function Main() {
-  const [tableData, setTableData] = useState([{}]);
+  const dispatch = useDispatch();
+
+  const enterprises = useSelector(state => state.enterprises.data);
+
+  const [tableData, setTableData] = useState(enterprises.slice(0, 30));
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -54,6 +60,8 @@ export default function Main() {
 
         allTableData = symbolsList;
 
+        dispatch(addEnterprises(symbolsList));
+
         setTableData(symbolsList.slice(0, 30));
       } catch (err) {
         alert('Algo deu errado ao buscar os dados!');
@@ -62,7 +70,11 @@ export default function Main() {
       }
     }
 
-    fetchCompanies();
+    if (enterprises.length === 0) {
+      fetchCompanies();
+    } else {
+      allTableData = enterprises;
+    }
   }, []);
 
   return (
