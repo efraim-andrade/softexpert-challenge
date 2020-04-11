@@ -17,6 +17,10 @@ OBS:
 
 - https://softexpertchallenge.netlify.com/
 
+<h1 align="center">
+  <img alt="Project demonstration gif" src="./softexpert-challenge.gif" />
+</h1>
+
 ---
 
 ## Desafio Front-end SoftExpert
